@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Порівняння утиліт моніторингу ПК</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #343a40;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #212529;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      margin: 15px 0;
+      padding: 20px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-title {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .card-text {
+      display: none;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .table th, .table td {
+      padding: 12px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    .table th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    #backToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      display: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+  nav div {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav input {
+    margin-top: 10px;
+    width: 100%;
+  }
+}
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Моніторинг стану ПК</h1>
+</header>
+
+<nav>
+  <div style="display: flex; align-items: center; flex-wrap: wrap; width: 100%; justify-content: space-between;">
+    <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+      <a href="#about">Про сайт</a>
+      <a href="#utilities">Утиліти</a>
+      <a href="#compare">Порівняння</a>
+    </div>
+    <input 
+      type="text" 
+      id="searchInput" 
+      placeholder="Пошук утиліти..." 
+      oninput="filterCards()" 
+      style="padding: 5px 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 1rem; margin-top: 10px; margin-left: auto; max-width: 200px;"
+    />
+  </div>
+</nav>
+
+<div class="container" id="about">
+  <h2>Про сайт</h2>
+  <p>
+    Цей вебсайт створений для надання корисної інформації про найпопулярніші утиліти моніторингу стану апаратного забезпечення персонального комп’ютера. 
+    Система моніторингу є важливою для користувачів, які хочуть контролювати продуктивність свого ПК, виявляти перегріви, перевантаження або збої в роботі обладнання. 
+  </p>
+  <p>
+    На сайті представлено опис утиліт, які допомагають в реальному часі спостерігати за температурою процесора, відеокарти, швидкістю обертання вентиляторів, 
+    рівнем навантаження на систему, а також електричними параметрами. Це дає змогу своєчасно реагувати на можливі проблеми й запобігти серйозним несправностям.
+  </p>
+  <p>
+    Ви можете ознайомитися з короткими характеристиками кожної утиліти, переглянути їхні переваги та недоліки, порівняти функціонал за допомогою спеціальної таблиці 
+    й обрати найкраще рішення для ваших потреб — від простих безкоштовних засобів до професійних комерційних програм.
+  </p>
+</div>
+
+
+<div class="container" id="utilities">
+  <h2>Утиліти</h2>
+
+  <div class="card" onclick="toggleInfo(this)">
+    <div class="card-title">HWMonitor</div>
+    <div class="card-text">Відома утиліта для моніторингу температур, напруг і вентиляторів. Проста у використанні.</div>
+  </div>
+
+  <div class="card" onclick="toggleInfo(this)">
+    <div class="card-title">AIDA64</div>
+    <div class="card-text">Професійна утиліта з великим функціоналом для тестування та діагностики.</div>
+  </div>
+
+  <div class="card" onclick="toggleInfo(this)">
+    <div class="card-title">HWiNFO</div>
+    <div class="card-text">Детальна утиліта з реальним моніторингом. Ідеально підходить для технічного аналізу.</div>
+  </div>
+
+  <div class="card" onclick="toggleInfo(this)">
+    <div class="card-title">Open Hardware Monitor</div>
+    <div class="card-text">Безкоштовна утиліта для моніторингу температури та частоти CPU, GPU тощо.</div>
+  </div>
+
+  <div class="card" onclick="toggleInfo(this)">
+    <div class="card-title">MSI Afterburner</div>
+    <div class="card-text">Утиліта для моніторингу та розгону відеокарти. Має візуальні графіки температури й навантаження.</div>
+  </div>
+</div>
+
+<div class="container" id="compare">
+  <h2>Порівняльна таблиця</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Назва</th>
+        <th>Функціональність</th>
+        <th>Точність</th>
+        <th>Інтерфейс</th>
+        <th>Ціна</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>HWMonitor</td><td>Середня</td><td>Висока</td><td>Простий</td><td>Безкоштовно</td></tr>
+      <tr><td>AIDA64</td><td>Дуже висока</td><td>Висока</td><td>Складний</td><td>Платно</td></tr>
+      <tr><td>HWiNFO</td><td>Висока</td><td>Висока</td><td>Середній</td><td>Безкоштовно</td></tr>
+      <tr><td>Open Hardware Monitor</td><td>Середня</td><td>Середня</td><td>Простий</td><td>Безкоштовно</td></tr>
+      <tr><td>MSI Afterburner</td><td>Висока</td><td>Висока</td><td>Зручний</td><td>Безкоштовно</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<button id="backToTop">↑</button>
+
+<script>
+  // Показати/приховати опис утиліти
+  function toggleInfo(card) {
+    const text = card.querySelector('.card-text');
+    text.style.display = text.style.display === 'block' ? 'none' : 'block';
+  }
+
+  // Кнопка "наверх"
+  const backToTop = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+  
+  // Пошук утиліт по назві
+  function filterCards() {
+  const input = document.getElementById('searchInput').value.toLowerCase();
+  const cards = document.querySelectorAll('.card');
+
+  cards.forEach(card => {
+    const title = card.querySelector('.card-title').textContent.toLowerCase();
+    card.style.display = title.includes(input) ? 'block' : 'none';
+  });
+}
+</script>
+
+</body>
+</html>
